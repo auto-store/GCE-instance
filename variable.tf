@@ -6,6 +6,7 @@ variable "project" {
 variable "instance_name" {
   description = "GCE instance name"
   default     = "default-instance"
+  type        = "list"
 }
 
 variable "machine_type" {
