@@ -1,6 +1,14 @@
-resource "google_compute_instance" "jumphost" {
+provider "google" {
+  project = var.project
+  region = var.region
+  
+}
+
+
+resource "google_compute_instance" "centos" {
   project      = var.project
   name         = var.instance_name
+  count        = var.howmany
   machine_type = var.machine_type
   zone         = var.zone
   

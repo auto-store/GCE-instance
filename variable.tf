@@ -1,15 +1,16 @@
-variable "project" {
-  description = "GCP project name"
-  default     = "tomh-lab-1000"
-}
+variable "project" {}
 
+variable "howmany" {
+  description = "number of instances"
+  default = "1"
+}
 variable "instance_name" {
   description = "GCE instance name"
 }
 
 variable "machine_type" {
   description = "size of GCE machine"
-  default     = "n1-standard-1"
+  default     = "g1-small"
 }
 
 variable "zone" {
@@ -24,7 +25,7 @@ variable "region" {
 
 variable "boot_image" {
   description = "GCE image to use"
-  default     = "nginx-webserver"
+  default     = "vault-consul-dev"
 }
 
 variable "network" {
