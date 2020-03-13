@@ -1,9 +1,5 @@
 variable "project" {}
 
-variable "howmany" {
-  description = "number of instances"
-  default = "1"
-}
 variable "instance_name" {
   description = "GCE instance name"
 }
