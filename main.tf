@@ -12,11 +12,11 @@ resource "google_compute_instance" "consul-server" {
 
   provisioner "remote-exec" {
     inline = [
-       "sudo useradd --system --home /etc/consul.d --shell /bin/false consul"
-       "sudo mkdir --parents /opt/consul"
-       "sudo chown --recursive consul:consul /opt/consul" 
-       "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/"
-       "sudo ansible-playbook /etc/ansible/GCE-instance/consul.yml -e "encrypt=${var.encrypt}" "project=${var.project}""
+       "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
+       "sudo mkdir --parents /opt/consul",
+       "sudo chown --recursive consul:consul /opt/consul", 
+       "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/",
+       "sudo ansible-playbook /etc/ansible/GCE-instance/consul.yml -e encrypt=${var.encrypt} project=${var.project}"
     ]
      connection {
       type        = "ssh"
