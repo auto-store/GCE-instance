@@ -18,7 +18,7 @@ resource "google_compute_instance" "consul-server" {
        "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/GCE-instance",
        "sudo ansible-playbook /etc/ansible/GCE-instance/consul.yml"
     ]
-     connection {
+     connection files{
       type        = "ssh"
       user        = var.ssh_user  
       private_key = var.private_key
