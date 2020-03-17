@@ -26,5 +26,5 @@ variable "boot_image" {
 
 variable "network" {
  description = "network interface to use"
- default     = "web-staging-network"
+ default     = "default"
 }
