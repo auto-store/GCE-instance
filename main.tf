@@ -22,6 +22,7 @@ resource "google_compute_instance" "consul-server" {
       type        = "ssh"
       user        = var.ssh_user  
       private_key = var.private_key
+       host        = self.network_interface[0].access_config[0].nat_ip
     }
 
   }
