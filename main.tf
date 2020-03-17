@@ -15,7 +15,7 @@ resource "google_compute_instance" "consul-server" {
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
        "sudo mkdir --parents /opt/consul",
        "sudo chown --recursive consul:consul /opt/consul", 
-       "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/",
+       "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/GCE-instance",
        "sudo ansible-playbook /etc/ansible/GCE-instance/consul.yml -e encrypt=kUNih7XKcNc0qqQFssC+7TW6vghZ8MXiPmjwaUGkyO4= project=tharris-demo-env"
     ]
      connection {
