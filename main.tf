@@ -15,11 +15,11 @@ resource "google_compute_instance" "consul-server" {
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
        "sudo mkdir --parents /opt/consul",
        "sudo chown --recursive consul:consul /opt/consul", 
-       "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/GCE-instance",
+       "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/",
        "sudo ansible-playbook /etc/ansible/GCE-instance/files/consul.yml"
     ]
-    
-    connection {
+  
+  connection {
       type        = "ssh"
       user        = var.ssh_user  
       private_key = var.private_key
