@@ -32,3 +32,9 @@ variable "network" {
 variable "encrypt" {
  description = "consul token"
 }
+
+variable "ssh_user" {}
+
+variable "private_key" {}
+
+
