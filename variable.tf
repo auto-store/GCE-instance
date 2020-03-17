@@ -28,3 +28,7 @@ variable "network" {
  description = "network interface to use"
  default     = "default"
 }
+
+variable "encrypt" {
+ description = "consul token"
+}
