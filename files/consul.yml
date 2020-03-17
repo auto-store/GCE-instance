@@ -2,7 +2,6 @@
 - hosts: localhost 
   become: yes 
   tasks: 
-    - name: consul useradd
 
     - name: configure systemd
       copy: 
