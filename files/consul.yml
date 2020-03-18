@@ -18,11 +18,6 @@
          src: /home/tharris/GCE-instance/files/consul.hcl
          dest: /etc/consul.d
 
-    - name: enable console service
-      systemd:
-        state: enabled
-        name: consul
-
     - name: start consul systemd
       systemd:
          state: started
