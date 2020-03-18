@@ -13,8 +13,10 @@ resource "google_compute_instance" "consul-server" {
   provisioner "remote-exec" {
     inline = [ 
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
-       "sudo mkdir --parents /opt/consul",
-       "sudo chown --recursive consul:consul /opt/consul", 
+       "sudo mkdir -p -m 644 /opt/consul",
+       "sudo chown -R consul:consul /opt/consul",
+       "consul -autocomplete-install",
+       "complete -C /usr/local/bin/consul consul"  
        "sudo git clone https://github.com/auto-store/GCE-instance /home/tharris/GCE-instance",
     ]
   
