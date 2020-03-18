@@ -10,6 +10,8 @@ resource "google_compute_instance" "consul-server" {
   zone         = var.zone
   allow_stopping_for_update = true
 
+  tags = ["dev-stack"]  
+
   provisioner "remote-exec" {
     inline = [ 
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
@@ -52,8 +54,6 @@ resource "google_compute_instance" "consul-server" {
     network = var.network
     access_config {
     }
-
-  tags = "dev-stack" 
   }
 }
 
