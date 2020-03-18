@@ -15,8 +15,8 @@
 
     - name: add consul configuration (server)
       copy: 
-         src: /home/tharris/GCE-instance/files/server-config.json
-         dest: /etc/consul.d
+         src: /home/tharris/GCE-instance/files/consul.hcl
+         dest: /etc/consul.d/ 
 
     - name: start consul systemd
       systemd:
