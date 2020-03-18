@@ -16,8 +16,8 @@ resource "google_compute_instance" "consul-server" {
        "sudo mkdir -p -m 644 /opt/consul",
        "sudo chown -R consul:consul /opt/consul",
        "consul -autocomplete-install",
-       "complete -C /usr/local/bin/consul consul"  
-       "sudo git clone https://github.com/auto-store/GCE-instance /home/tharris/GCE-instance",
+       "complete -C /usr/local/bin/consul consul",  
+       "sudo git clone https://github.com/auto-store/GCE-instance /home/tharris/GCE-instance"
     ]
   
   connection {
