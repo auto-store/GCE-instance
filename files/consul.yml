@@ -5,7 +5,7 @@
 
     - name: configure systemd
       copy: 
-         src: /home/tharris/GCP-instance/files/consul.service
+         src: /home/tharris/GCE-instance/files/consul.service
          dest: /etc/systemd/system 
       
     - name: create consul directory
@@ -15,7 +15,7 @@
 
     - name: add consul configuration (server)
       copy: 
-         src: /home/tharris/GCP-instance/files/consul.hcl
+         src: /home/tharris/GCE-instance/files/consul.hcl
          dest: /etc/consul.d
 
     - name: enable console service
