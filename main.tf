@@ -11,7 +11,7 @@ resource "google_compute_instance" "consul-server" {
   allow_stopping_for_update = true
 
   provisioner "file" {
-    source        = "/files/consul.yml
+    source        = "/files/consul.yml"
     destination   = "/etc/ansible/GCE"
   }
 
