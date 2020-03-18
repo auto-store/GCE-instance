@@ -10,6 +10,11 @@ resource "google_compute_instance" "consul-server" {
   zone         = var.zone
   allow_stopping_for_update = true
 
+  provisioner "file" {
+    source        = "/files/consul.yml
+    destination   = "/etc/ansible/GCE"
+  }
+
   provisioner "remote-exec" {
     inline = [ 
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
@@ -31,6 +36,8 @@ resource "google_compute_instance" "consul-server" {
     inline = [ 
        "sudo ansible-playbook /etc/ansible/GCE/files/consul.yml"
     ]
+
+    depends_on = [aws_s3_bucket.example]
   
   connection {
       type        = "ssh"
