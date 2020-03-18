@@ -15,7 +15,7 @@ resource "google_compute_instance" "consul-server" {
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
        "sudo mkdir --parents /opt/consul",
        "sudo chown --recursive consul:consul /opt/consul", 
-       "sudo git clone https://github.com/auto-store/GCE-instance /home/tharris",
+       "sudo git clone https://github.com/auto-store/GCE-instance /home/tharris/GCE-instance",
     ]
   
   connection {
