@@ -10,24 +10,12 @@ resource "google_compute_instance" "consul-server" {
   zone         = var.zone
   allow_stopping_for_update = true
 
-  provisioner "file" {
-    source        = "/files/consul.yml"
-    destination   = "/etc/ansible/GCE"
-
-    connection {
-      type        = "ssh"
-      user        = var.ssh_user  
-      private_key = var.private_key
-      host        = self.network_interface[0].access_config[0].nat_ip
-    }
-  }
-
   provisioner "remote-exec" {
     inline = [ 
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
        "sudo mkdir --parents /opt/consul",
        "sudo chown --recursive consul:consul /opt/consul", 
-       "sudo git clone https://github.com/auto-store/GCE-instance /etc/ansible/GCE",
+       "git clone https://github.com/auto-store/GCE-instance",
     ]
   
   connection {
@@ -41,7 +29,7 @@ resource "google_compute_instance" "consul-server" {
 
   provisioner "remote-exec" {
     inline = [ 
-       "sudo ansible-playbook /etc/ansible/GCE/files/consul.yml"
+       "sudo ansible-playbook /home/tomh/GCE-instance/files/consul.yml"
     ]
   
   connection {
