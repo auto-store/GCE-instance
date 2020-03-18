@@ -15,7 +15,7 @@ resource "google_compute_instance" "consul-server" {
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
        "sudo mkdir --parents /opt/consul",
        "sudo chown --recursive consul:consul /opt/consul", 
-       "git clone https://github.com/auto-store/GCE-instance",
+       "sudo git clone https://github.com/auto-store/GCE-instance /home/tharris",
     ]
   
   connection {
@@ -29,7 +29,7 @@ resource "google_compute_instance" "consul-server" {
 
   provisioner "remote-exec" {
     inline = [ 
-       "sudo ansible-playbook /home/tomh/GCE-instance/files/consul.yml"
+       "sudo ansible-playbook /home/tharris/GCE-instance/files/consul.yml"
     ]
   
   connection {
