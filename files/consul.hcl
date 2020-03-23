@@ -5,3 +5,4 @@ retry_join = ["provider=gce project_name=tharris-demo-env tag_value=dev-stack"]
 server = true
 bootstrap_expect = 3
 bootstrap = true 
+client_addr = "0.0.0.0"
