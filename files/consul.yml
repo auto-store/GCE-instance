@@ -19,7 +19,7 @@
          dest: /etc/consul.d/
          owner: consul
          group: consul
-         mode: 640 
+         mode: '640' 
 
     - name: start consul systemd
       systemd:
