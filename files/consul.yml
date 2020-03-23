@@ -22,3 +22,4 @@
       systemd:
          state: started
          name: consul 
+         enabled: true 
