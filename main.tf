@@ -15,7 +15,7 @@ resource "google_compute_instance" "consul-server" {
   provisioner "remote-exec" {
     inline = [ 
        "sudo useradd --system --home /etc/consul.d --shell /bin/false consul",
-       "sudo mkdir -p -m 644 /opt/consul",
+       "sudo mkdir -p /opt/consul",
        "sudo chown -R consul:consul /opt/consul",
        "consul -autocomplete-install",
        "complete -C /usr/local/bin/consul consul",  
