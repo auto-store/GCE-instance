@@ -9,7 +9,11 @@ resource "google_compute_instance" "consul-server" {
   machine_type = var.machine_type
   zone         = var.zone
   allow_stopping_for_update = true
-  service_account = "stack_server"
+  
+  
+  service_account {
+    scopes = ["cloud-platform"]
+  } 
 
   tags = ["dev-stack"]  
 
