@@ -69,7 +69,7 @@ resource "google_compute_firewall" "hashi-stack" {
     protocol = "udp"
     ports    = ["8301", "8302", "8600"]
   }
-  source_ranges = var.allowed_inbound_cidrs
+  source_ranges = ["0.0.0.0"]
 }
 
 
