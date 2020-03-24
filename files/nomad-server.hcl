@@ -1,3 +1,4 @@
+datacenter = "london"
 data_dir = "/etc/nomad.d"
 
 server {
