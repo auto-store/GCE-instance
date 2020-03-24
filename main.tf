@@ -56,4 +56,20 @@ resource "google_compute_instance" "consul-server" {
   }
 }
 
+resource "google_compute_firewall" "hashi-stack" {
+  name    = "hashi-stack"
+  network = var.network
+  project = var.project
+
+  allow {
+    protocol = "tcp"
+    ports    = ["8200", "8500", "8300", "8301", "8302", "8201", "8600"]
+  }
+  allow {
+    protocol = "udp"
+    ports    = ["8301", "8302", "8600"]
+  }
+  source_ranges = var.allowed_inbound_cidrs
+}
+
 
