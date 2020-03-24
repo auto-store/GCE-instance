@@ -3,6 +3,11 @@
   become: yes 
   tasks: 
 
+    - name: configure SELinux
+      selinux:
+        state: permissive
+
+        
     - name: open firewall ports (TCP)
       firewalld:
         state: enabled  
