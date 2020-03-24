@@ -1,0 +1,29 @@
+---
+- hosts: localhost 
+  become: yes 
+  tasks: 
+
+    - name: configure systemd
+      copy: 
+         src: /home/tharris/GCE-instance/files/nomad.service
+         dest: /etc/systemd/system 
+      
+    - name: create nomad directory
+      file:
+         path: /etc/nomad.d
+         state: directory
+         mode: 700 
+
+    - name: add nomad configuration (server)
+      copy: 
+         src: /home/tharris/GCE-instance/files/nomad-client.hcl
+         dest: /etc/nomad.d/
+ 
+    - pause:
+        minutes: 2
+        
+    - name: start nomad systemd
+      systemd:
+         state: started
+         name: nomad 
+         enabled: true 

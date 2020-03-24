@@ -33,6 +33,10 @@ variable "encrypt" {
  description = "consul token"
 }
 
+variable "client_instance_name" {}
+
+variable "client_instance_size" {} 
+
 variable "ssh_user" {}
 
 variable "private_key" {}
