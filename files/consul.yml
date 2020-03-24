@@ -5,9 +5,10 @@
 
     - name: configure SELinux
       selinux:
+        policy: targeted
         state: permissive
 
-        
+
     - name: open firewall ports (TCP)
       firewalld:
         state: enabled  
