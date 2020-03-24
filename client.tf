@@ -2,7 +2,7 @@ resource "google_compute_instance" "clients" {
   for_each     = toset(var.client_instance_name)
   project      = var.project
   name         = (each.value)
-  machine_type = var.client_instance_size 
+  machine_type = "n1-standard-1"  
   zone         = var.zone
   allow_stopping_for_update = true
   
