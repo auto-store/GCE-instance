@@ -16,7 +16,7 @@
 
     - name: add nomad configuration (server)
       copy: 
-         src: /home/tharris/GCE-instance/files/nomad.hcl
+         src: /home/tharris/GCE-instance/files/nomad-server.hcl
          dest: /etc/nomad.d/
         
 
