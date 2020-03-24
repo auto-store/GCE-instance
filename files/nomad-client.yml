@@ -20,7 +20,7 @@
          dest: /etc/nomad.d/
  
     - pause:
-        minutes: 2
+        minutes: 1
         
     - name: start nomad systemd
       systemd:
