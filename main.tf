@@ -9,6 +9,7 @@ resource "google_compute_instance" "consul-server" {
   machine_type = var.machine_type
   zone         = var.zone
   allow_stopping_for_update = true
+  service_account = "stack_server"
 
   tags = ["dev-stack"]  
 
