@@ -14,7 +14,7 @@
          state: directory
          mode: 700 
 
-    - name: add nomad configuration (server)
+    - name: add nomad configuration (client)
       copy: 
          src: /home/tharris/GCE-instance/files/nomad-client.hcl
          dest: /etc/nomad.d/
