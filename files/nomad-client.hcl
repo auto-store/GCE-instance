@@ -2,9 +2,10 @@ datacenter = "london"
 data_dir = "/etc/nomad.d"
 
 client {
-  options {
-     "docker.privileged.enabled" = "true"
-  }
   enabled = true
+  options {
+    "driver.raw_exec.enable" = "1"
+    "docker.privileged.enabled" = "true"
+  }
 }
 
