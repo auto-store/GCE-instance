@@ -1,0 +1,51 @@
+---
+- hosts: localhost 
+  become: yes 
+  tasks: 
+
+    - name: configure SELinux
+      selinux:
+        policy: targeted
+        state: permissive
+
+
+    - name: open firewall ports (TCP)
+      firewalld:
+        state: enabled  
+        port: "{{ item }}"
+      loop: 
+        - 8600/tcp
+        - 8500/tcp
+        - 8301/tcp
+        - 8302/tcp
+        - 8300/tcp
+        - 8502/tcp 
+        - 8501/tcp
+        - 8600/udp
+        - 8301/udp
+        - 8302/udp
+
+      
+    - name: configure systemd
+      copy: 
+         src: /home/tharris/GCE-instance/files/consul.service
+         dest: /etc/systemd/system 
+      
+    - name: create consul directory
+      file:
+         path: /etc/consul.d
+         state: directory
+
+    - name: add consul configuration (client)
+      copy: 
+         src: /home/tharris/GCE-instance/files/consul-client.hcl
+         dest: /etc/consul.d/
+         owner: consul
+         group: consul
+         mode: '640' 
+
+    - name: start consul systemd
+      systemd:
+         state: started
+         name: consul 
+         enabled: true 
