@@ -51,9 +51,20 @@ resource "google_compute_instance" "clients" {
       image = var.boot_image
     }
   }
+
+  attached_disk {
+    source = google_compute_disk.pxstorage.id
+  }
+
   network_interface {
     network = var.network
     access_config {
     }
   }
+}
+
+resource "google_compute_disk" "pxstorage" {
+  name  = "px"
+  type  = "pd-ssd"
+  size = 10
 }
