@@ -34,7 +34,7 @@ variable "encrypt" {
 }
 
 variable "client_instance_name" {
-  type = "map"
+  type = map(string)
 }
 
 variable "client_instance_size" {} 
