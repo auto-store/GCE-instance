@@ -53,7 +53,7 @@ resource "google_compute_instance" "clients" {
   }
 
   attached_disk {
-    source = google_compute_disk.pxstorage.id
+    source = element(google_compute_disk.pxstorage.*.self_link, count.index) 
   }
 
   network_interface {
@@ -64,8 +64,9 @@ resource "google_compute_instance" "clients" {
 }
 
 resource "google_compute_disk" "pxstorage" {
-  name  = "px"
+  count = 3
+  name  = "px-${count.index + 1}"
   type  = "pd-ssd"
   zone = var.zone
-  size = 10
+  size = "10" 
 }
