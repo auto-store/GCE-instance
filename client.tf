@@ -66,5 +66,6 @@ resource "google_compute_instance" "clients" {
 resource "google_compute_disk" "pxstorage" {
   name  = "px"
   type  = "pd-ssd"
+  zone = var.zone
   size = 10
 }
