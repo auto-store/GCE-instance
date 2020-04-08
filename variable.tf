@@ -33,7 +33,9 @@ variable "encrypt" {
  description = "consul token"
 }
 
-variable "client_instance_name" {}
+variable "client_instance_name" {
+  type = set(string)
+}
 
 variable "client_instance_size" {} 
 
