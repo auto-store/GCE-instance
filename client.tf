@@ -60,7 +60,7 @@ resource "google_compute_instance" "clients" {
 }
 
 resource "google_compute_disk" "pxstorage" {
-  for_each = toset(var.client_instance_name)
+  for_each = var.client_instance_name
   name  = (each.value)
   type  = "pd-ssd"
   zone = var.zone
@@ -70,7 +70,7 @@ resource "google_compute_disk" "pxstorage" {
 resource "google_compute_attached_disk" "default" {
   instance = google_compute_instance.clients[each.value]
   disk     = google_compute_disk.pxstorage[each.value] 
-  for_each = toset(var.client_instance_name)
+  for_each = var.client_instance_name
 }
 
 
