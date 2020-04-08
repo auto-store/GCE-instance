@@ -68,6 +68,6 @@ resource "google_compute_disk" "pxstorage" {
 }
 
 resource "google_compute_attached_disk" "default" {
-  disk     = google_compute_disk.pxstorage.[each.key]
-  instance = google_compute_instance.clients.[each.key]
+  disk     = google_compute_disk.pxstorage.[each.value]
+  instance = google_compute_instance.clients.[each.value]
 }
