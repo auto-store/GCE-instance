@@ -52,10 +52,6 @@ resource "google_compute_instance" "clients" {
     }
   }
 
-  attached_disk {
-    source = element(google_compute_disk.pxstorage.*.self_link, count.index) 
-  }
-
   network_interface {
     network = var.network
     access_config {
@@ -64,9 +60,14 @@ resource "google_compute_instance" "clients" {
 }
 
 resource "google_compute_disk" "pxstorage" {
-  count = 3
-  name  = "px-${count.index + 1}"
+  for_each = toset(var.client_instance_name)
+  name  = (each.value)
   type  = "pd-ssd"
   zone = var.zone
   size = "10" 
+}
+
+resource "google_compute_attached_disk" "default" {
+  disk     = google_compute_disk.pxstorage.id
+  instance = google_compute_instance.clients.id
 }
