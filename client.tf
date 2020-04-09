@@ -59,18 +59,18 @@ resource "google_compute_instance" "clients" {
   }
 }
 
-resource "google_compute_disk" "pxstorage" {
-  for_each = var.client_instance_name
-  name  = (each.value)
-  type  = "pd-ssd"
-  zone = var.zone
-  size = "10" 
-}
+#resource "google_compute_disk" "pxstorage" {
+#  for_each = var.client_instance_name
+#  type  = "pd-ssd"
+#  name  = (each.value)
+#  zone = var.zone
+#  size = "10" 
+#}
 
-resource "google_compute_attached_disk" "default" {
-  instance = google_compute_instance.clients[each.key].id
-  disk     = google_compute_disk.pxstorage[each.key].id
-  for_each = toset(var.client_instance_name)
-}
+#resource "google_compute_attached_disk" "default" {
+#  disk     = google_compute_disk.pxstorage[each.key].id
+#  instance = google_compute_instance.clients[each.key].id
+#  for_each = toset(var.client_instance_name)
+#}
 
 
