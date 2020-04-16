@@ -60,11 +60,11 @@ resource "google_compute_instance" "clients" {
 }
 
 resource "google_compute_disk" "pxstorage" {
-  for_each = var.client_instance_name
+  for_each = toset(var.client_instance_name)
   type  = "pd-ssd"
   name  = (each.value)
   zone = var.zone
-  size = "10" 
+  size = "10"
 }
 
 resource "google_compute_attached_disk" "default" {
