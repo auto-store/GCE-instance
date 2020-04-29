@@ -44,6 +44,9 @@
          group: consul
          mode: '640' 
 
+    - pause:
+         minutes: 1
+
     - name: start consul systemd
       systemd:
          state: started
