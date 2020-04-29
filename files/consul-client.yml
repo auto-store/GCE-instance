@@ -38,7 +38,7 @@
 
     - name: add consul configuration (client)
       copy: 
-         src: /home/tharris/GCE-instance/files/consul-client.hcl
+         src: /home/tharris/GCE-instance/files/client/consul.hcl
          dest: /etc/consul.d/
          owner: consul
          group: consul
