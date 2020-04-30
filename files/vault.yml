@@ -7,6 +7,3 @@
       copy: 
          src: /home/tharris/GCE-instance/files/vault-config.hcl
          dest: /home/tomh
-
-    
-      
