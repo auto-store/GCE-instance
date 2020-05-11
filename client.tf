@@ -11,7 +11,7 @@ resource "google_compute_instance" "clients" {
     scopes = ["cloud-platform"]
   } 
 
-  tags = ["dev-stack"]  
+  tags = ["dev-stack"]
 
   provisioner "remote-exec" {
     inline = [ 
@@ -20,7 +20,7 @@ resource "google_compute_instance" "clients" {
        "sudo chown -R consul:consul /opt/consul",
        "consul -autocomplete-install",
        "complete -C /usr/local/bin/consul consul",  
-       "sudo git clone https://github.com/auto-store/GCE-instance /home/tharris/GCE-instance"
+       "sudo git clone https://github.com/auto-store/GCE-instance /home/GCE-instance"
     ]
   
   connection {
@@ -34,8 +34,8 @@ resource "google_compute_instance" "clients" {
 
  provisioner "remote-exec" {
     inline = [ 
-       "sudo ansible-playbook /home/tharris/GCE-instance/files/consul-client.yml",
-       "sudo ansible-playbook /home/tharris/GCE-instance/files/nomad-client.yml"
+       "sudo ansible-playbook /home/GCE-instance/files/consul-client.yml",
+       "sudo ansible-playbook /home/GCE-instance/files/nomad-client.yml"
     ]
   connection {
       type        = "ssh"

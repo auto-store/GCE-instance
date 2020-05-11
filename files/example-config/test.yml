@@ -1,0 +1,10 @@
+title: nomad-csi
+description: Permissions for GCE-PD CSI driver
+stage: BETA
+includedPermissions:
+- compute.disks.get
+- compute.disks.use
+- compute.instances.attachDisk
+- compute.instances.detachDisk
+- compute.instances.get
+- iam.serviceAccounts.actAs

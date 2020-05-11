@@ -1,11 +1,14 @@
 datacenter = "london"
-data_dir = "/etc/nomad.d"
+data_dir = "/var/lib/nomad"
 
 client {
   enabled = true
-  options {
-    "driver.raw_exec.enable" = "1"
-    "docker.privileged.enabled" = "true"
+}
+
+plugin "docker" {
+  config {
+    allow_privileged = true
   }
 }
 
+log_file = "/etc/nomad.d/logs"

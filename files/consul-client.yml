@@ -28,7 +28,7 @@
       
     - name: configure systemd
       copy: 
-         src: /home/tharris/GCE-instance/files/consul.service
+         src: /home/GCE-instance/files/consul.service
          dest: /etc/systemd/system 
       
     - name: create consul directory
@@ -38,7 +38,7 @@
 
     - name: add consul configuration (client)
       copy: 
-         src: /home/tharris/GCE-instance/files/client/consul.hcl
+         src: /home/GCE-instance/files/client/consul.hcl
          dest: /etc/consul.d/
          owner: consul
          group: consul

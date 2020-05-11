@@ -5,7 +5,7 @@
 
     - name: configure systemd
       copy: 
-         src: /home/tharris/GCE-instance/files/nomad.service
+         src: /home/GCE-instance/files/nomad.service
          dest: /etc/systemd/system 
       
     - name: create nomad directory
@@ -16,7 +16,7 @@
 
     - name: add nomad configuration (client)
       copy: 
-         src: /home/tharris/GCE-instance/files/nomad-client.hcl
+         src: /home/GCE-instance/files/nomad-client.hcl
          dest: /etc/nomad.d/
  
     - pause:
