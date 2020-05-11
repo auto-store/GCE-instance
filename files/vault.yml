@@ -1,9 +1,0 @@
----
-- hosts: localhost 
-  become: yes 
-  tasks: 
-
-    - name: Vault Configuration File
-      copy: 
-         src: /home/GCE-instance/files/vault-config.hcl
-         dest: /home/

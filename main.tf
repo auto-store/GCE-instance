@@ -39,8 +39,7 @@ resource "google_compute_instance" "consul-server" {
  provisioner "remote-exec" {
     inline = [ 
        "sudo ansible-playbook /home/tharris/GCE-instance/files/consul.yml",
-       "sudo ansible-playbook /home/tharris/GCE-instance/files/nomad.yml",
-       "sudo ansible-playbook /home/tharris/GCE-instance/files/vault.yml"
+       "sudo ansible-playbook /home/tharris/GCE-instance/files/nomad.yml"
     ]
   connection {
       type        = "ssh"
