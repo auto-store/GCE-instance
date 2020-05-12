@@ -11,3 +11,5 @@ plugin "docker" {
     allow_privileged = true
   }
 }
+
+log_file = "/etc/nomad.d/logs"
