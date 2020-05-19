@@ -34,7 +34,7 @@ resource "google_compute_instance" "clients" {
 
  provisioner "remote-exec" {
     inline = [ 
-       "sudo ansible-playbook /home/GCE-instance/files/binary.yml"
+       "sudo ansible-playbook /home/GCE-instance/files/binary.yml",
        "sudo ansible-playbook /home/GCE-instance/files/consul-client.yml",
        "sudo ansible-playbook /home/GCE-instance/files/nomad-client.yml"
     ]
