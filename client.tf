@@ -19,7 +19,7 @@ resource "google_compute_instance" "clients" {
        "sudo mkdir -p /opt/consul",
        "sudo chown -R consul:consul /opt/consul",
        "consul -autocomplete-install",
-       "complete -C /usr/local/bin/consul consul",  
+       "complete -C /usr/local/bin/consul consul",
        "sudo git clone https://github.com/auto-store/GCE-instance /home/GCE-instance"
     ]
   
@@ -34,7 +34,6 @@ resource "google_compute_instance" "clients" {
 
  provisioner "remote-exec" {
     inline = [ 
-       "sudo ansible-playbook /home/GCE-instance/files/binary.yml",
        "sudo ansible-playbook /home/GCE-instance/files/consul-client.yml",
        "sudo ansible-playbook /home/GCE-instance/files/nomad-client.yml"
     ]
