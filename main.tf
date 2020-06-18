@@ -69,7 +69,7 @@ resource "google_compute_firewall" "hashi-stack" {
 
   allow {
     protocol = "tcp"
-    ports    = ["8200", "8500", "8300", "8301", "8302", "8201", "8600"]
+    ports    = ["8200", "8500", "8300", "8301", "8302", "8201", "8600", "8605"]
   }
   allow {
     protocol = "udp"
