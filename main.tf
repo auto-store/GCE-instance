@@ -1,14 +1,14 @@
 provider "google" {
   project = var.project
-  for_each  = toset(var.region)
-  region = (each.value)
+  region = var.region
 }
 resource "google_compute_instance" "consul-server" {
   for_each     = toset(var.instance_name)
   project      = var.project
   name         = (each.value)
   machine_type = var.machine_type
-  zone         = var.zone
+  for_each     = toset(var.zone)
+  zone         = (each.value)
   allow_stopping_for_update = true
   
   
