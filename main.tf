@@ -1,6 +1,7 @@
 provider "google" {
   project = var.project
-  region = var.region
+  for_each  = toset(var.region)
+  region = (each.value)
 }
 resource "google_compute_instance" "consul-server" {
   for_each     = toset(var.instance_name)
