@@ -2,7 +2,7 @@ provider "google" {
   project = var.project
   region = var.region
 }
-resource "google_compute_instance" "nomad-server" {
+resource "google_compute_instance" "nomad-server-2" {
   for_each     = toset(var.instance_name)
   project      = var.project
   name         = (each.value)
@@ -57,7 +57,7 @@ resource "google_compute_instance" "nomad-server" {
 }
 
 
-resource "google_compute_instance" "clients" {
+resource "google_compute_instance" "clients-2" {
   for_each     = toset(var.client_instance_name)
   project      = var.project
   name         = (each.value)
@@ -88,7 +88,7 @@ resource "google_compute_instance" "clients" {
 
  provisioner "remote-exec" {
     inline = [
-       "sudo ansible-playbook /home/GCE-instance/files/nomad-client.yml"
+       "sudo ansible-playbook /home/GCE-instance/files/nomad-client-2.yml"
     ]
   connection {
       type        = "ssh"
