@@ -1,7 +1,3 @@
-provider "google" {
-  project = var.project
-  region = var.region
-}
 resource "google_compute_instance" "nomad-server-2" {
   for_each     = toset(var.instance_name)
   project      = var.project
