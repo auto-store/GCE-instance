@@ -14,6 +14,11 @@ variable "zone" {
   default     = "europe-west2-c"
 }
 
+variable "zone_2" {
+  description = "GCP zone"
+  default     = "europe-west2-b"
+}
+
 variable "region" {
   description = "GCP region"
   default     = "europe-west2"
