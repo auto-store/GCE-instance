@@ -57,23 +57,6 @@ resource "google_compute_instance" "nomad-server" {
 }
 
 
-
-resource "google_compute_firewall" "hashi-stack" {
-  name    = "hashi-stack"
-  network = var.network
-  project = var.project
-
-  allow {
-    protocol = "tcp"
-    ports    = ["8200", "8500", "8300", "8301", "8302", "8201", "8600", "8605", "8606", "8607" ]
-  }
-  allow {
-    protocol = "udp"
-    ports    = ["8301", "8302", "8600", "8601"]
-  }
-  source_ranges = ["0.0.0.0"]
-}
-
 resource "google_compute_instance" "clients" {
   for_each     = toset(var.client_instance_name)
   project      = var.project
@@ -129,16 +112,4 @@ resource "google_compute_instance" "clients" {
   }
 }
 
-resource "google_compute_disk" "pxstorage" {
-  for_each = toset(var.client_instance_name)
-  type  = "pd-ssd"
-  name  = "${(each.value)}-px"
-  zone = var.zone_2
-  size = "10"
-}
 
-resource "google_compute_attached_disk" "default" {
-  disk     = google_compute_disk.pxstorage[each.key].id
-  instance = google_compute_instance.clients[each.key].id
-  for_each = toset(var.client_instance_name)
-}
