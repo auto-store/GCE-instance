@@ -11,7 +11,7 @@ resource "google_compute_instance" "nomad-server-2" {
     scopes = ["cloud-platform"]
   } 
 
-  tags = ["dev-stack"]  
+  tags = ["dr"]  
 
   provisioner "remote-exec" {
     inline = [
@@ -65,7 +65,7 @@ resource "google_compute_instance" "clients-2" {
     scopes = ["cloud-platform"]
   }
 
-  tags = ["dev-stack"]
+  tags = ["dr"]
 
   provisioner "remote-exec" {
     inline = [

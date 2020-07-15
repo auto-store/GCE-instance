@@ -26,4 +26,4 @@
       systemd:
          state: started
          name: nomad 
-         enabled: true 
+         enabled: true
