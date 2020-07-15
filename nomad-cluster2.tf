@@ -1,5 +1,5 @@
 resource "google_compute_instance" "nomad-server-2" {
-  for_each     = toset(var.instance_name)
+  for_each     = toset(var.server_instance_name_dr)
   project      = var.project
   name         = (each.value)
   machine_type = var.machine_type
@@ -54,7 +54,7 @@ resource "google_compute_instance" "nomad-server-2" {
 
 
 resource "google_compute_instance" "clients-2" {
-  for_each     = toset(var.client_instance_name)
+  for_each     = toset(var.client_instance_name_DR)
   project      = var.project
   name         = (each.value)
   machine_type = var.client_instance_size
@@ -108,4 +108,14 @@ resource "google_compute_instance" "clients-2" {
   }
 }
 
+variable "zone_2" {
+  description = "GCP zone"
+  default     = "europe-west2-b"
+}
+
+variable "server_instance_name_dr" {
+}
+
+variable "client_instance_name_dr" {
+}
 
