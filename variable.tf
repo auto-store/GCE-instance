@@ -21,7 +21,7 @@ variable "region" {
 
 variable "boot_image" {
   description = "GCE image to use"
-  default     = "vault-consul-dev"
+  default     = "stacker-server-1"
 }
 
 variable "network" {
@@ -37,7 +37,7 @@ variable "client_instance_name" {
   type = set(string)
 }
 
-variable "client_instance_size" {} 
+variable "client_instance_size" {}
 
 variable "ssh_user" {}
 
