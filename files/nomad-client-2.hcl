@@ -1,4 +1,4 @@
-datacenter = "dc1"
+datacenter = "dr"
 data_dir = "/var/lib/nomad"
 
 client {
@@ -12,3 +12,5 @@ plugin "docker" {
 }
 
 log_file = "/etc/nomad.d/logs"
+
+retry_join = ["provider=gce tag_value=dr"]

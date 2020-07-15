@@ -3,7 +3,7 @@ data_dir = "/var/lib/nomad"
 
 server {
   enabled = true
-  bootstrap_expect = 3
+  bootstrap_expect = 1
 }
 
 plugin "docker" {
@@ -13,3 +13,5 @@ plugin "docker" {
 }
 
 log_file = "/etc/nomad.d/logs"
+
+retry_join = ["provider=gce tag_value=dr"]
