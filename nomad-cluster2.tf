@@ -1,3 +1,14 @@
+variable "server_instance_name_dr" {
+}
+
+variable "client_instance_name_dr" {
+}
+
+variable "zone_2" {
+  description = "GCP zone"
+  default     = "europe-west2-b"
+}
+
 resource "google_compute_instance" "nomad-server-2" {
   for_each     = toset(var.server_instance_name_dr)
   project      = var.project
@@ -29,7 +40,7 @@ resource "google_compute_instance" "nomad-server-2" {
 
  provisioner "remote-exec" {
     inline = [
-       "sudo ansible-playbook /home/GCE-instance/files/nomad.yml"
+       "sudo ansible-playbook /home/GCE-instance/files/nomad-server-2.yml"
     ]
   connection {
       type        = "ssh"
@@ -83,7 +94,9 @@ resource "google_compute_instance" "clients-2" {
 
  provisioner "remote-exec" {
     inline = [
-       "sudo ansible-playbook /home/GCE-instance/files/nomad-client-2.yml"
+       "sudo ansible-playbook /home/GCE-instance/files/nomad-client-2.yml",
+       "sudo ansible-playbook /home/GCE-instance/files/consul.yml"
+       
     ]
   connection {
       type        = "ssh"
@@ -107,14 +120,8 @@ resource "google_compute_instance" "clients-2" {
   }
 }
 
-variable "zone_2" {
-  description = "GCP zone"
-  default     = "europe-west2-b"
+output "nomad-dr-server-ip" {
+  value = network_interface[0].access_config[0].nat_ip
 }
 
-variable "server_instance_name_dr" {
-}
-
-variable "client_instance_name_dr" {
-}
 
