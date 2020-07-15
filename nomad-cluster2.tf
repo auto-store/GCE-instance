@@ -54,7 +54,7 @@ resource "google_compute_instance" "nomad-server-2" {
 
 
 resource "google_compute_instance" "clients-2" {
-  for_each     = toset(var.client_instance_name_DR)
+  for_each     = toset(var.client_instance_name_dr)
   project      = var.project
   name         = (each.value)
   machine_type = var.client_instance_size
