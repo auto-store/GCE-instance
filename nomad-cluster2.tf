@@ -120,8 +120,8 @@ resource "google_compute_instance" "clients-2" {
   }
 }
 
-output "nomad-dr-server-ip" {
-  value = network_interface[0].access_config[0].nat_ip
-}
+// output "nomad-dr-server-ip" {
+//   value = network_interface[0].access_config[0].nat_ip
+// }
 
 
