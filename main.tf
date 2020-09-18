@@ -26,7 +26,7 @@ resource "google_compute_instance" "nomad-server" {
        "complete -C /usr/local/bin/consul consul",  
        "sudo git clone https://github.com/auto-store/GCE-instance /home/GCE-instance"
     ]
-  
+
   connection {
       type        = "ssh"
       user        = var.ssh_user  
@@ -69,7 +69,7 @@ resource "google_compute_firewall" "hashi-stack" {
 
   allow {
     protocol = "tcp"
-    ports    = ["8200", "8500", "8300", "8301", "8302", "8201", "8600", "8605", "8606", "8607", "8010" ]
+    ports    = ["8200", "8500", "8300", "8301", "8302", "8201", "8600", "8605", "8606", "8607", "8010", "8041" ]
   }
   allow {
     protocol = "udp"
