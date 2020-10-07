@@ -15,3 +15,5 @@ plugin "docker" {
 log_file = "/etc/nomad.d/logs"
 
 retry_join = ["provider=gce tag_value=dr"]
+
+ui = true

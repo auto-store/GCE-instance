@@ -13,3 +13,5 @@ plugin "docker" {
 }
 
 log_file = "/etc/nomad.d/logs"
+
+ui = true
