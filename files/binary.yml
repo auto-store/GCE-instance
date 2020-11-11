@@ -39,7 +39,7 @@
 
     - name: Unzip Nomad binary
       unarchive:
-        src: https://releases.hashicorp.com/nomad/0.11.3/nomad_0.11.3_linux_amd64.zip
+        src: https://releases.hashicorp.com/nomad/0.12.8/nomad_0.12.8_linux_amd64.zip
         dest: /usr/local/bin
 
     - name: Unzip Terraform binary
